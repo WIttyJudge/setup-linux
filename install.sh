@@ -2,16 +2,10 @@
 # This is a comment!
 echo Hello From Installer
 
-add_a_user()
+install_package()
 {
-  USER=$1
-  echo "Adding user $USER ..."
+  echo "--- Installing package: $1"
 }
 
-###
-# Main body of script starts here
-###
-echo "Start of script..."
-add_a_user bob
-add_a_user jhon
-echo "End of script..."
+install_package privet
+install_package kakdela
