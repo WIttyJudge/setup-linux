@@ -2,7 +2,8 @@
 # This is a comment!
 echo Hello From Installer
 
-function install_package {
+function install_package 
+{
 	echo "--- Installing package: $1"
 }
 
