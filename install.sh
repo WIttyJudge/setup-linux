@@ -2,9 +2,9 @@
 # This is a comment!
 echo Hello From Installer
 
-function installing_package {
-  echo "--- installing package: $1"
+function install_package {
+	echo "--- Installing package: $1"
 }
 
-installing_package privet
-installing_package kak dela
+install_package privet
+install_package kak dela
