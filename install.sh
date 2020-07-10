@@ -1,20 +1,32 @@
 #!/bin/sh
 
-if [ "$(whoami)" != "root"]
-then 
-  echo "You have to run this script as Superuser!"
+# Running the script only by root
+if [ "$(whoami)" != "root" ]
+then
+  echo "You have to run this script with superuser"
   exit 1
 fi
 
 echo Hello From Installer
 
+NO_FORMAT="\033[0m"
+F_UNDERLINED="\033[4m"
+C_GREEN4="\033[38;5;28m"
+
 install_package()
 {
-  echo "--- Installing package: $1"
-  sudo apt 
+  echo -e "${F_UNDERLINED}${C_GREEN4}--- Installing package: $1${NO_FORMAT}"
+  sudo apt install -y $1
 }
 
-sudo apt-get update
-
-install_package privet
-install_package kakdela
+install_package fonts-firacode
+install_package synaptic
+install_package pass
+install_package htop
+install_package gparted
+install_package net-tools
+install_package nmap
+install_package terminator
+install_package ripgrep
+install_package httpie
+install_package chromium-browser
