@@ -9,4 +9,9 @@ fi
 
 echo Hello From Installer
 
-sh ./packages.sh
+dir=$HOME/.dotfiles
+if [ ! -d "$dir" ]; then
+  git clone https://github.com/WIttyJudge/dotfiles "$dir"
+fi
+
+# sh ./packages.sh
