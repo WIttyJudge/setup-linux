@@ -7,7 +7,7 @@ then
   exit 1
 fi
 
-echo Hello From Installer
+echo -e "Hello From Installer\n"
 
 dir=$HOME/.dotfiles
 if [ ! -d "$dir" ]; then

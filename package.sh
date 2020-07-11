@@ -6,14 +6,14 @@ F_UNDERLINED="\033[4m"
 C_GREEN4="\033[38;5;28m"
 
 install_package() {
-  echo -e "${F_UNDERLINED}${C_GREEN4}--- Installing package: ${NO_FORMAT} $1"
+  echo -e "${F_UNDERLINED}${C_GREEN4}--- Installing package: ${NO_FORMAT} $1\n"
   sudo apt install -y $1
 }
 
 # Update the system's packages to the latest version before installing new
 sudo apt update && sudo apt upgrade -y
 
-# Install packages
+#Install packages
 install_package fonts-firacode
 install_package synaptic
 install_package pass
