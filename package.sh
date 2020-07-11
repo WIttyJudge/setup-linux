@@ -1,17 +1,14 @@
 #!/bin/sh
 
-# Some colors and formatting to output :)
-NO_FORMAT="\033[0m"
-F_UNDERLINED="\033[4m"
-C_GREEN4="\033[38;5;28m"
-
 install_package() {
-  echo -e "${F_UNDERLINED}${C_GREEN4}--- Installing package: ${NO_FORMAT} $1\n"
-  sudo apt install -y $1
-}
+  # Some colors and formatting to output :)
+  NO_FORMAT="\033[0m"
+  F_UNDERLINED="\033[4m"
+  C_GREEN4="\033[38;5;28m"
 
-# Update the system's packages to the latest version before installing new
-sudo apt update && sudo apt upgrade -y
+  echo -e "${F_UNDERLINED}${C_GREEN4}--- Installing package: ${NO_FORMAT} $1\n"
+  apt install -y $1
+}
 
 #Install packages
 install_package fonts-firacode
