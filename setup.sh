@@ -5,8 +5,9 @@ install_package() {
 	NO_FORMAT="\033[0m"
 	C_GREEN4="\033[38;5;28m"
 
-	echo -e "${C_GREEN4}Installing package:${NO_FORMAT} $1\n"
+	echo -e "${C_GREEN4}----Installing package:${NO_FORMAT} $1"
 	apt install -y $1
+  echo "\n"
 }
 
 # Update the system's packages to the latest version before installing new

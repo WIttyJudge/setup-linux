@@ -11,7 +11,7 @@ fi
 NO_FORMAT="\033[0m"
 C_GREY0="\033[38;5;16m"
 C_LIGHTPINK3="\033[48;5;174m"
-echo "${C_GREY0}${C_LIGHTPINK3}!!! Hello From Installer For Ubuntu !!!\n${NO_FORMAT}"
+echo "${C_GREY0}${C_LIGHTPINK3}**** HELLO FROM INSTALLER FOR UBUNTU ****\n${NO_FORMAT}"
 
 dir=$HOME/.dotfiles
 if [ ! -d "$dir" ]; then

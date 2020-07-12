@@ -3,11 +3,11 @@
 install_package() {
   # Some colors and formatting to output :)
   NO_FORMAT="\033[0m"
-  F_UNDERLINED="\033[4m"
   C_GREEN4="\033[38;5;28m"
 
-  echo -e "${F_UNDERLINED}${C_GREEN4}--- Installing package: ${NO_FORMAT} $1\n"
+  echo -e "${C_GREEN4}---- Installing package:${NO_FORMAT} $1"
   apt install -y $1
+  echo "\n"
 }
 
 #Install packages
