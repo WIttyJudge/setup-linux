@@ -1,4 +1,4 @@
-alias s='sudo '
+alias s="sudo "
 
 # directory
 alias cdd="cd ~/Desktop "
