@@ -25,4 +25,4 @@ sh ./setup.sh
 sh ./package.sh
 
 # Install programs I used from another resource.
-sh ./resource
+sh ./resource.sh
