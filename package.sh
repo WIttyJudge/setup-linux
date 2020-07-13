@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
 
 install_package() {
-  # Some colors and formatting to output :)
-  NO_FORMAT="\033[0m"
-  C_GREEN4="\033[38;5;28m"
-
-  echo -e "${C_GREEN4}---- Installing package:${NO_FORMAT} $1"
+  echo -e "\033[38;5;28m---- Installing package:\033[0m $1"
+  
   apt install -y $1
-  echo "\n"
 }
 
 #Install packages
@@ -22,3 +18,6 @@ install_package terminator
 install_package ripgrep
 install_package httpie
 install_package chromium-browser
+
+# Remove downloaded by apt trash
+apt autoremove
