@@ -12,12 +12,7 @@ apt install -y git
 
 dir=$HOME/.dotfiles
 if [ ! -d "$dir" ]; then 
+  echo -e "\033[38;5;28m---- Clonning repository$\033[0m"
+  
   git clone -b Ubuntu https://github.com/WittyJudge/dotfiles $dir
 fi
-
-if [ ! -d "$dir" ]; then
-  echo "Exist!"
-  chown -R $(whoami) $dir
-fi
-
-echo "okay"
