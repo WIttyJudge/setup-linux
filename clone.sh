@@ -6,12 +6,16 @@ if [ "$(whoami)" != "root" ]; then
   exit 1
 fi
 
-echo "\033[38;5;16m \033[48;5;174m**** CLONNING REPOSITORY FROM UBUNTU ****\n\033[0m"
+echo "\033[38;5;16m \033[48;5;174m**** CLONNING REPOSITORY FOR UBUNTU ****\n\033[0m"
 
 apt install -y git
 
 dir=$HOME/.dotfiles
 if [ ! -d "$dir" ]; then 
   git clone -b Ubuntu https://github.com/WittyJudge/dotfiles $dir
+fi
+
+if [ ! -d "$dir" ]; then 
   chown -R $(whoami) $dir
 fi
+
