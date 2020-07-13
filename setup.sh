@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 install_package() {
 	# Some colors and formatting to output :)

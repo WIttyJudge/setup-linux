@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 install_resource() {
   # $1 - name of the installed file. $2 - resource to download

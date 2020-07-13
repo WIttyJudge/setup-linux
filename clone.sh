@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Running the script only by root
 if [ "$(whoami)" != "root" ]; then
