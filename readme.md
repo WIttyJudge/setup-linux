@@ -1,13 +1,12 @@
 Clone repository
 
 ```
-git clone -b Ubuntu https://github.com/WIttyJudge/dotfiles.git $HOME/.dotfiles
-
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/WIttyJudge/dotfiles/Ubuntu/install.sh)"
+sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/WIttyJudge/dotfiles/Ubuntu/clone.sh)"
 ```
 
-Sets permission .
+Run installer
 
 ```
-sudo chown -R $(whoami) $HOME/.dotfiles
+cd ~/.dotfiles
+sudo sh install.sh
 ```
