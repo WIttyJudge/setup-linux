@@ -8,10 +8,7 @@ then
 fi
 
 # Some of the style and formats for the output
-NO_FORMAT="\033[0m"
-C_GREY0="\033[38;5;16m"
-C_LIGHTPINK3="\033[48;5;174m"
-echo "${C_GREY0}${C_LIGHTPINK3}**** HELLO FROM INSTALLER FOR UBUNTU ****\n${NO_FORMAT}"
+echo "\033[38;5;16m \033[48;5;174m**** HELLO FROM INSTALLER FOR UBUNTU ****\n\033[0m"
 
 dir=$HOME/.dotfiles
 if [ ! -d "$dir" ]; then
