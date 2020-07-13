@@ -15,7 +15,9 @@ if [ ! -d "$dir" ]; then
   git clone -b Ubuntu https://github.com/WittyJudge/dotfiles $dir
 fi
 
-if [ ! -d "$dir" ]; then 
+if [ ! -d "$dir" ]; then
+  echo "Exist!"
   chown -R $(whoami) $dir
 fi
 
+echo "okay"
