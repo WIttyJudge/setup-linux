@@ -16,3 +16,15 @@ if [[ ! -d "$dir" ]]; then
   
   git clone -b Ubuntu https://github.com/WittyJudge/dotfiles $dir
 fi
+
+echo "Add chown? [y/n]"
+read ans
+
+case "$ans" in
+  y*)
+    chown -R $(whoami) $dir
+    ;;
+  n*)
+    echo "Okey"
+    ;;
+esac
