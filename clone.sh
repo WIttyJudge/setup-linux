@@ -13,4 +13,4 @@ if [ ! -d "$dir" ]; then
   git clone -b Ubuntu https://github.com/WittyJudge/dotfiles $dir
 fi
 
-chown -R $(whoami) $dir/.dotfiles
+chown -R $(whoami) $dir
