@@ -19,10 +19,10 @@ if [ ! -d "$dir" ]; then
 fi
 
 # Setup the configuration for speed up system
-source ./setup.sh
+source "$dir/setup.sh"
 
 # Install a packages I used by apt package manager
-source ./package.sh
+source "$dir/package.sh"
 
 # Install programs I used from another resource.
-source ./resource.sh
+source "$dir/resource.sh"
