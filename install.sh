@@ -13,7 +13,7 @@ C_GREY0="\033[38;5;16m"
 C_LIGHTPINK3="\033[48;5;174m"
 echo "${C_GREY0}${C_LIGHTPINK3}**** HELLO FROM INSTALLER FOR UBUNTU ****\n${NO_FORMAT}"
 
-dir=$HOME/dotfiles
+dir=$HOME/.dotfiles
 if [ ! -d "$dir" ]; then
   git clone -b Ubuntu https://github.com/WIttyJudge/dotfiles $dir
 fi
