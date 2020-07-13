@@ -22,7 +22,7 @@ read ans
 
 case "$ans" in
   y*)
-    chown -R $(whoami) $dir
+    chown -R $(echo $USERNAME) $dir
     ;;
   n*)
     echo "Okey"
