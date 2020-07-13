@@ -11,7 +11,7 @@ echo "\033[38;5;16m \033[48;5;174m**** CLONNING REPOSITORY FOR UBUNTU ****\n\033
 apt install -y git
 
 dir=$HOME/.dotfiles
-if [ ! -d "$dir" ]; then 
+if [[ ! -d "$dir" ]]; then 
   echo -e "\033[38;5;28m---- Clonning repository\033[0m\n"
   
   git clone -b Ubuntu https://github.com/WittyJudge/dotfiles $dir
