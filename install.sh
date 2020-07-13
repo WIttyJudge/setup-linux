@@ -15,7 +15,7 @@ echo "${C_GREY0}${C_LIGHTPINK3}**** HELLO FROM INSTALLER FOR UBUNTU ****\n${NO_F
 
 dir=$HOME/dotfiles
 if [ ! -d "$dir" ]; then
-  git clone -b Ubuntu https://github.com/WIttyJudge/dotfiles "$dir"
+  git clone -b Ubuntu https://github.com/WIttyJudge/dotfiles $dir
 fi
 
 # Setup the configuration for speed up system
