@@ -13,8 +13,5 @@ apt install -y git
 dir=$HOME/.dotfiles
 if [ ! -d "$dir" ]; then 
   git clone -b Ubuntu https://github.com/WittyJudge/dotfiles $dir
+  chown -R $(whoami) $dir
 fi
-
-echo "$(whoami)"
-sudo chown -R $(whoami) $HOME/.dotfiles
-echo "$(whoami)"
