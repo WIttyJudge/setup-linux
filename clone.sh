@@ -15,4 +15,6 @@ if [ ! -d "$dir" ]; then
   git clone -b Ubuntu https://github.com/WittyJudge/dotfiles $dir
 fi
 
+echo "$(whoami)"
 sudo chown -R $(whoami) $HOME/.dotfiles
+echo "$(whoami)"
