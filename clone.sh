@@ -15,7 +15,8 @@ if [ ! -d "$dir" ]; then
   echo -e "\033[38;5;28m---- Clonning repository\033[0m\n"
   
   git clone -b Ubuntu https://github.com/WittyJudge/dotfiles $dir
-#   chown -R $(echo $USERNAME) $dir
 fi
 
-
+echo $USER
+chown -R $(echo $USER) $dir
+echo $USER
