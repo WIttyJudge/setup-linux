@@ -19,5 +19,5 @@ fi
 
 user=$(who | cut -d ' ' -f2)
 echo "Sets chown for $user"
-chown -R $(who | cut -d ' ' -f2) $dir
+chown -R $user $dir
 
