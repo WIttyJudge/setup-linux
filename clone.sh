@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Running the script only by root
-if [ "$(whoami)" = "root" ]; then
+if [ "$(whoami)" != "root" ]; then
   echo "Run this script without sudo"
   exit 1
 fi
