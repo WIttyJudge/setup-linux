@@ -17,6 +17,7 @@ if [ ! -d "$dir" ]; then
   git clone -b Ubuntu https://github.com/WittyJudge/dotfiles $dir
 fi
 
-echo $USER
-chown -R $(echo $USER) $dir
-echo $USER
+user=$(who | cut -d ' ' -f2)
+echo "Sets chown for $user"
+chown -R $user $dir
+
