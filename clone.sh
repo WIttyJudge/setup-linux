@@ -2,7 +2,7 @@
 
 # Running the script only by root
 if [ "$(whoami)" != "root" ]; then
-  echo "Run this script without sudo"
+  echo "You have to run the script with sudo"
   exit 1
 fi
 
