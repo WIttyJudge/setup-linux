@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-go_folder=go1.14.6.tar.gz
+go_folder=go1.14.6
 
 echo "Installing Golang"
-wget https://github.com/golang/go/archive/$go_folder
-sudo tar -xvf $go_folder
-sudo mv go /usr/local/go
+wget https://github.com/golang/go/archive/$go_folder.tar.gz
+sudo tar -xvf $go_folder.tar.gz
+sudo mv $go_folder /usr/local/go
 
 # export GOROOT=/usr/local/go
 # export GOPATH=$HOME/golib
