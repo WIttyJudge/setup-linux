@@ -6,10 +6,6 @@ echo "Installing Golang"
 wget https://golang.org/dl/$go_folder
 sudo tar -C /usr/local -xzf $go_folder
 
-# export GOROOT=/usr/local/go
-# export GOPATH=$HOME/golib
-# export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-
 sudo mkdir -p $HOME/code/src/github.com/wittyjudge
 sudo mkdir -p $HOME/golib
 
