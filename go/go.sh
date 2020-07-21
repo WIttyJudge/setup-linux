@@ -3,7 +3,7 @@
 go_folder=go1.14.6.tar.gz
 
 echo "Installing Golang"
-wget -O  https://github.com/golang/go/archive/$go_folder
+wget https://github.com/golang/go/archive/$go_folder
 sudo tar -xvf $go_folder
 sudo mv go /usr/local
 
