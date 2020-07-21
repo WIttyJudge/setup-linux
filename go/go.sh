@@ -11,6 +11,8 @@ sudo mv go /usr/local/go
 # export GOPATH=$HOME/golib
 # export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
+sudo mkdir -p $HOME/code/src/github.com/wittyjudge
+
 cat <<EOF >> ~/.profile
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/golib
