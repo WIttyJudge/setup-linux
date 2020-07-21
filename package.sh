@@ -11,6 +11,7 @@ install_package fonts-firacode
 install_package synaptic
 install_package pass
 install_package htop
+install_package vim
 install_package gparted
 install_package net-tools
 install_package nmap
