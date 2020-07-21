@@ -11,7 +11,7 @@ sudo mv go /usr/local/go
 # export GOPATH=$HOME/golib
 # export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
-cat <<EOF >> ~/Desktop/.profile
+cat <<EOF >> ~/.profile
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/golib
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
