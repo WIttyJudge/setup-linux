@@ -19,6 +19,7 @@ install_package terminator
 install_package ripgrep
 install_package httpie
 install_package chromium-browser
+install_package ruby-full
 
 # Remove downloaded by apt trash
 apt autoremove
