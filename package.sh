@@ -19,6 +19,9 @@ install_package terminator
 install_package ripgrep
 install_package httpie
 install_package chromium-browser
+
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 install_package yarn
 
 # Remove downloaded by apt trash
