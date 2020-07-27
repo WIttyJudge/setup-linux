@@ -4,3 +4,4 @@ sudo apt install ruby-full
 sudo gem install solargraph
 # Install Ruby on Rails
 sudo gem install rails
+sudo gem install pg
