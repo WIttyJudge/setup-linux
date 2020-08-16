@@ -20,6 +20,7 @@ install_package ripgrep
 install_package httpie
 install_package chromium-browser
 install_package neofetch
+install_package nitroshare
 
 # Install yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
