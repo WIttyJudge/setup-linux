@@ -1,19 +1,28 @@
 #!/usr/bin/env bash
 
-# Running the script only by root
-if [ "$(whoami)" != "root" ]; then
-  echo "You have to run this script with superuser"
+# Main installation
+
+# OS supported:
+# Ubuntu
+
+# Am I root?
+# The $EUID env holds the current user's UID
+if [ "$EUID" != 0 ]; then
+  echo "only from sudo"
   exit 1
 fi
 
-# Some of the style and formats for the output
-echo "\033[38;5;16m \033[48;5;174m**** HELLO FROM INSTALLER FOR UBUNTU ****\n\033[0m"
+# What OS do I use?
+case $(cat /etc/issue | cut -d ' ' -f1) in
+  Ubuntu) 
+    type="ubuntu"
+    ;;
+  Debian)
+    type="debian"
+    ;;
+  *)
+    echo "cannot get OS information"
+  ;;
+esac
 
-# Setup the configuration for speed up system
-sh ./setup.sh
-
-# Install a packages I used by apt package manager
-sh ./package.sh
-
-# Install programs I used from another resource.
-sh ./resource.sh
+bash $type/install-$type.sh
