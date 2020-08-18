@@ -14,15 +14,9 @@ fi
 
 # What OS do I use?
 case $(cat /etc/issue | cut -d ' ' -f1) in
-  Ubuntu) 
-    type="ubuntu"
-    ;;
-  Debian)
-    type="debian"
-    ;;
-  *)
-    echo "cannot get OS information"
-  ;;
+  Ubuntu) type="ubuntu" ;;
+  Debian) type="debian" ;;
+  *) echo "cannot get OS information" ;;
 esac
 
 bash $type/install-$type.sh
