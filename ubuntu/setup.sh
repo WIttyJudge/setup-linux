@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source $(dirname "$(pwd)")/functions/installer.sh
+source $SETUP_LINUX_PATH/functions/installer.sh
 
 # Update the system's packages to the latest version before installing new
 apt update && sudo apt upgrade -y

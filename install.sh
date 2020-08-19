@@ -13,6 +13,10 @@
 linux=$(echo "$OSTYPE" | grep "linux")
 [ -z $linux ] && echo "Script Cannot be executed on another operation system. Only Linux." && exit 1
 
+# SETUP_LINUX_PATH env contains path to folder
+folder_path=$(pwd)
+export SETUP_LINUX_PATH=$folder_path
+
 # What OS do I use?
 os_name=$(cat /etc/issue | cut -d ' ' -f1)
 case $os_name in

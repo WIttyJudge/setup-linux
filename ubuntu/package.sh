@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Load helper functions
-source $(dirname "$(pwd)")/functions/installer.sh
+source $SETUP_LINUX_PATH/functions/installer.sh
 
 #Install packages
 apt_installer fonts-firacode
