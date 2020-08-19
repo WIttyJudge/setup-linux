@@ -20,4 +20,3 @@ fi
 user=$(who | cut -d ' ' -f1)
 echo "Sets chown for $user"
 chown -R $user $dir
-

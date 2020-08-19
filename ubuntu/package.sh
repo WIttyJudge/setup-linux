@@ -1,31 +1,28 @@
 #!/usr/bin/env bash
 
-install_package() {
-  echo -e "\033[38;5;28m---- Installing package:\033[0m $1"
-  
-  apt install -y $1
-}
+# Load helper functions
+source $(dirname "$(pwd)")/functions/installer.sh
 
 #Install packages
-install_package fonts-firacode
-install_package synaptic
-install_package pass
-install_package htop
-install_package vim
-install_package gparted
-install_package net-tools
-install_package nmap
-install_package terminator
-install_package ripgrep
-install_package httpie
-install_package chromium-browser
-install_package neofetch
-install_package nitroshare
+apt_installer fonts-firacode
+apt_installer synaptic
+apt_installer pass
+apt_installer htop
+apt_installer vim
+apt_installer gparted
+apt_installer net-tools
+apt_installer nmap
+apt_installer terminator
+apt_installer ripgrep
+apt_installer httpie
+apt_installer chromium-browser
+apt_installer neofetch
+apt_installer nitroshare
 
 # Install yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-install_package yarn
+apt_installer yarn
 
 # Remove downloaded by apt trash
 apt autoremove
