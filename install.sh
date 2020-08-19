@@ -7,7 +7,7 @@
 
 # Am I root?
 # The $EUID env holds the current user's UID
-[ "$EUID" -ne 0 ] && echo "You have to run this script only from sudo user" && exit 1
+[ "$EUID" -ne 0 ] && echo "You have to run this script only from sudo user." && exit 1
 
 # Script can be executed only in linux
 linux=$(echo "$OSTYPE" | grep "linux")
