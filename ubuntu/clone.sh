@@ -6,7 +6,7 @@ if [ "$(whoami)" != "root" ]; then
   exit 1
 fi
 
-echo "\033[38;5;16m \033[48;5;174m**** CLONNING REPOSITORY FOR UBUNTU ****\n\033[0m"
+echo -e "\033[38;5;16m \033[48;5;174m**** CLONNING REPOSITORY FOR UBUNTU ****\n\033[0m"
 
 apt install -y git
 
