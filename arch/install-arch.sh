@@ -5,7 +5,8 @@
 ### OPTIONS AND VARIABLES ###
 
 username="wittyjudge"
-aurhelper="yay"
+aurhelper="yay" 
+user_home=$(eval echo ~${SUDO_USER})
 
 dotfilesrepo="https://github.com/wittyjudge/dotfiles"
 packageslist="https://raw.githubusercontent.com/WIttyJudge/dotfiles/master/packages.csv"
@@ -26,20 +27,25 @@ clone_repo() {
   fi
 }
 
-# folders which is used by my configs
 create_folders() {
-  if [ ! -d "/home/$username/Picture" ]; then
-    sudo -u $username mkdir -p "/home/$username/Picture/screenshots" &&
-    sudo -u $username mkdir -p "/home/$username/Picture/wallpapers" &&
-    sudo -u $username mkdir "/home/$username/projects"
+  if [ ! -d "$user_home/Picture" ]; then
+    sudo -u $username mkdir -p "$user_home/Picture/screenshots" &&
+    sudo -u $username mkdir -p "$user_home/Picture/wallpapers" &&
+    sudo -u $username mkdir "$user_home/projects"
   fi
 }
 
-# turning off the annoying sound.
 system_beep_sound_off() {
   dialog --infobox "Disable beep sound..." 10 50
   rmmod pcspkr
 	echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf 
+}
+
+setup_zsh() {
+  if [ ! -f "$user_home/fast-syntax-highlighting" ]; then
+    local fsh_repo="https://github.com/zdharma/fast-syntax-highlighting"
+    clone_repo $fsh_repo "$user_home/fast-syntax-highlighting" "fast-syntax-highlighting"
+  fi
 }
 
 install_yay() {
@@ -89,18 +95,24 @@ finalize(){
 
 ### SCRIPT EXECUTION ###
 
-echo "Hello dude!"
-
 welcome_message || error "Script was successfully stoped."
 
-clone_repo $dotfilesrepo "/home/$username/dotfiles" "dotfiles"
+# Clone my configuration files.
+clone_repo $dotfilesrepo "$user_home/dotfiles" "dotfiles"
 
+# Install AUR helper.
 install_yay || error "Error while installing yay"
 
+# Initialize folders which is used by my configs.
 create_folders || error "Error while creating folders"
 
-install_packages || error "Error while installing packages"
+# Install all packages by pacman and AUR.
+install_packages
 
+# Install all modules which is used by zsh.
+setup_zsh || error "Error while setting up zsh"
+
+# turning off the annoying sound.
 system_beep_sound_off
 
 # Last message. Installation complited.
