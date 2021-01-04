@@ -28,10 +28,11 @@ clone_repo() {
 
 # folders which is used by my configs
 create_folders() {
-  [ ! -d "~/Picture" ] &&
+  if [ ! -d "/home/$username/Picture" ]; then
     sudo -u $username mkdir -p "/home/$username/Picture/screenshots" &&
     sudo -u $username mkdir -p "/home/$username/Picture/wallpapers" &&
     sudo -u $username mkdir "/home/$username/projects"
+  fi
 }
 
 # turning off the annoying sound.
@@ -53,8 +54,7 @@ install_yay() {
 }
 
 pacman_install() {
-  dialog --title "Script Installation" --infobox "Installing pacman package:
-  $1.." 5 70
+  dialog --title "Script Installation" --infobox "Installing pacman package: $1.." 5 70
   pacman --noconfirm --needed -S "$1" >> /dev/null 2>&1
 }
 
@@ -73,6 +73,7 @@ install_packages() {
   while IFS=, read -r tag name description; do
     case "$tag" in
       "AUR") aur_install "$name" ;;
+      "SKIP") continue ;;
       *) pacman_install "$name" ;;
     esac
   done 
@@ -92,7 +93,7 @@ echo "Hello dude!"
 
 welcome_message || error "Script was successfully stoped."
 
-clone_repo $dotfilesrepo "/home/$username/reponame" "dotfiles"
+clone_repo $dotfilesrepo "/home/$username/dotfiles" "dotfiles"
 
 install_yay || error "Error while installing yay"
 
