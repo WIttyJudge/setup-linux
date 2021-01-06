@@ -23,16 +23,14 @@ welcome_message() {
 clone_repo() {
   if [ ! -d "$2" ]; then
     dialog --title "Clone github respository" --infobox "Clonning $3.." 5 70
-    sudo -u "$username" git clone "$1" "$2" >> /dev/null 2>&1
+    sudo -u "$username" git clone "$1" "$2" > /dev/null 2>&1
   fi
 }
 
 create_folders() {
-  if [ ! -d "$user_home/Picture" ]; then
-    sudo -u $username mkdir -p "$user_home/Picture/screenshots" &&
-    sudo -u $username mkdir -p "$user_home/Picture/wallpapers" &&
-    sudo -u $username mkdir "$user_home/projects"
-  fi
+  sudo -u $username mkdir -p "$user_home/Picture/screenshots" &&
+  sudo -u $username mkdir -p "$user_home/Picture/wallpapers" &&
+  sudo -u $username mkdir -p "$user_home/projects" 
 }
 
 system_beep_sound_off() {
@@ -53,24 +51,24 @@ install_yay() {
     dialog --title "Installing AUR " --infobox "Install yay" 5 70
     cd /tmp && sudo rm -rf yay*
     curl -sO https://aur.archlinux.org/cgit/aur.git/snapshot/yay.tar.gz &&
-    sudo -u "$username" tar -xvf yay.tar.gz >> /dev/null 2>&1 &&
+    sudo -u "$username" tar -xvf yay.tar.gz > /dev/null 2>&1 &&
     cd yay &&
-    sudo -u "$username" makepkg --noconfirm -si >> /dev/null 2>&1
+    sudo -u "$username" makepkg --noconfirm -si > /dev/null 2>&1
   fi
 }
 
 pacman_install() {
   dialog --title "Script Installation" --infobox "Installing pacman package: $1.." 5 70
-  pacman --noconfirm --needed -S "$1" >> /dev/null 2>&1
+  pacman --noconfirm --needed -S "$1" > /dev/null 2>&1
 }
 
 aur_install() {
   dialog --title "Script Installation" --infobox "Installing aur package: $1.." 5 70
-  $aurhelper --noconfirm --needed -S "$1" >> /dev/null 2>&1
+  $aurhelper --noconfirm --needed -S "$1" > /dev/null 2>&1
 }
 
 install_packages() {
-  [ ! -f "/tmp/packageslist.csv" ] && curl -Ls "$packageslist" >> /tmp/packageslist.csv
+  [ ! -f "/tmp/packageslist.csv" ] && curl -Ls "$packageslist" > /tmp/packageslist.csv
 
   # read first line of file and skip it.
   exec < /tmp/packageslist.csv
