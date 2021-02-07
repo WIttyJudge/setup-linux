@@ -44,11 +44,14 @@ setup_zsh() {
     local fsh_repo="https://github.com/zdharma/fast-syntax-highlighting"
     clone_repo $fsh_repo "$user_home/fast-syntax-highlighting" "fast-syntax-highlighting"
   fi
+
+  # Set ZSH as default shell
+  chsh -s $(which zsh)
 }
 
 install_yay() {
   if [ ! -f "/usr/bin/yay" ]; then
-    dialog --title "Installing AUR " --infobox "Install yay" 5 70
+    dialog --title "Installing AUR " --infobox "Install yay..." 5 70
     cd /tmp && sudo rm -rf yay*
     curl -sO https://aur.archlinux.org/cgit/aur.git/snapshot/yay.tar.gz &&
     sudo -u "$username" tar -xvf yay.tar.gz > /dev/null 2>&1 &&
