@@ -50,8 +50,8 @@ setup_zsh() {
     touch "$user_home/.cache/zsh/history"
   fi
 
-#   # Set ZSH as default shell
-#   chsh -s $(which zsh)
+  # Set ZSH as default shell
+  sudo chsh -s /bin/zsh "$username"
 }
 
 install_yay() {
