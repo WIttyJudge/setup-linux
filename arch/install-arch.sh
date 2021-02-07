@@ -45,8 +45,13 @@ setup_zsh() {
     clone_repo $fsh_repo "$user_home/fast-syntax-highlighting" "fast-syntax-highlighting"
   fi
 
-  # Set ZSH as default shell
-  chsh -s $(which zsh)
+  if [ ! -f "$user_home/.cache/zsh/history" ]; then
+    mkdir -p "$user_home/.cache/zsh" && 
+    touch "$user_home/.cache/zsh/history"
+  fi
+
+#   # Set ZSH as default shell
+#   chsh -s $(which zsh)
 }
 
 install_yay() {
