@@ -32,7 +32,7 @@ welcome_message() {
 
 setup_reflector() {
   pacman_install "reflector"
-  reflector --country Russia,Ukrain --protocol https --sort rate --save /etc/pacman.d/mirrorlist > /dev/null 2>&1
+  reflector --country Russia,Ukrain --protocol https,http --sort rate --save /etc/pacman.d/mirrorlist > /dev/null 2>&1
   pacman --noconfirm -Rns reflector  > /dev/null 2>&1
 }
 
