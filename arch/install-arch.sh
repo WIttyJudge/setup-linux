@@ -4,6 +4,9 @@
 
 ### OPTIONS AND VARIABLES ###
 
+# Добавить, чтобы задавался вопрос: 
+# What is your login? И после ответа он записывался в username.
+
 username="wittyjudge"
 aurhelper="yay" 
 user_home=$(eval echo ~${SUDO_USER})
@@ -13,12 +16,7 @@ packageslist="https://raw.githubusercontent.com/WIttyJudge/dotfiles/master/packa
 
 ### FUNCTIONS ###
 
-error() { clear; printf "ERROR:\\n%s\\n" "$1" >&2; exit 1;}
-
-welcome_message() {
-  dialog --colors --title "Welcome!" --yesno "You've ran automation script to
-  setup Arch Linux system.\\n\\nDo you want to continue?" 8 70
-}
+error() { clear; printf "ERROR:\\n%s\\n" "$1" >&2; exit 1; }
 
 clone_repo() {
   if [ ! -d "$2" ]; then
@@ -27,31 +25,15 @@ clone_repo() {
   fi
 }
 
-create_folders() {
-  sudo -u $username mkdir -p "$user_home/Picture/screenshots" &&
-  sudo -u $username mkdir -p "$user_home/Picture/wallpapers" &&
-  sudo -u $username mkdir -p "$user_home/projects" 
+welcome_message() {
+  dialog --colors --title "Welcome!" --yesno "You've ran automation script to
+    setup Arch Linux system.\\n\\nDo you want to continue?" 8 70
 }
 
-system_beep_sound_off() {
-  dialog --infobox "Disable beep sound..." 10 50
-  rmmod pcspkr
-	echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf 
-}
-
-setup_zsh() {
-  if [ ! -f "$user_home/fast-syntax-highlighting" ]; then
-    local fsh_repo="https://github.com/zdharma/fast-syntax-highlighting"
-    clone_repo $fsh_repo "$user_home/fast-syntax-highlighting" "fast-syntax-highlighting"
-  fi
-
-  if [ ! -f "$user_home/.cache/zsh/history" ]; then
-    mkdir -p "$user_home/.cache/zsh" && 
-    touch "$user_home/.cache/zsh/history"
-  fi
-
-  # Set ZSH as default shell
-  sudo chsh -s /bin/zsh "$username"
+setup_reflector() {
+  pacman_install "reflector"
+  reflector --country Russia,Ukrain --protocol https --sort rate --save /etc/pacman.d/mirrorlist > /dev/null 2>&1
+  pacman --noconfirm -Rns reflector  > /dev/null 2>&1
 }
 
 install_yay() {
@@ -63,6 +45,12 @@ install_yay() {
     cd yay &&
     sudo -u "$username" makepkg --noconfirm -si > /dev/null 2>&1
   fi
+}
+
+create_folders() {
+  sudo -u $username mkdir -p "$user_home/Picture/screenshots" &&
+  sudo -u $username mkdir -p "$user_home/Picture/wallpapers" &&
+  sudo -u $username mkdir -p "$user_home/projects" 
 }
 
 pacman_install() {
@@ -91,12 +79,33 @@ install_packages() {
   done 
 }
 
+setup_zsh() {
+  if [ ! -f "$user_home/fast-syntax-highlighting" ]; then
+    local fsh_repo="https://github.com/zdharma/fast-syntax-highlighting"
+    clone_repo $fsh_repo "$user_home/fast-syntax-highlighting" "fast-syntax-highlighting"
+  fi
+
+  if [ ! -f "$user_home/.cache/zsh/history" ]; then
+    mkdir -p "$user_home/.cache/zsh" && 
+    touch "$user_home/.cache/zsh/history"
+  fi
+
+  # Set ZSH as default shell
+  sudo chsh -s /bin/zsh "$username"
+}
+
+system_beep_sound_off() {
+  dialog --infobox "Disable beep sound..." 10 50
+  rmmod pcspkr
+  echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf 
+}
+
 finalize(){
-	dialog --title "All done!" --msgbox "Congrats! Provided there were no hidden
-  errors, the script completed successfully and all the programs and
-  configuration files should be in place.\\n\\nTo run the new graphical
-  environment, log out and log back in as your new user, then run the command
-  \"startx\" to start the graphical environment." 12 80
+  dialog --title "All done!" --msgbox "Congrats! Provided there were no hidden
+    errors, the script completed successfully and all the programs and
+    configuration files should be in place.\\n\\nTo run the new graphical
+    environment, log out and log back in as your new user, then run the command
+    \"startx\" to start the graphical environment." 12 80
 }
 
 ### SCRIPT EXECUTION ###
@@ -105,6 +114,9 @@ welcome_message || error "Script was successfully stoped."
 
 # Clone my configuration files.
 clone_repo $dotfilesrepo "$user_home/dotfiles" "dotfiles"
+
+# Setup reflect for faster downloads using pacman.
+setup_reflector || error "Aborted. Reclector cannot be installed"
 
 # Install AUR helper.
 install_yay || error "Error while installing yay"
