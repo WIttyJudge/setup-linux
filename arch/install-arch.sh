@@ -12,7 +12,7 @@ aurhelper="yay"
 user_home=$(eval echo ~${SUDO_USER})
 
 dotfilesrepo="https://github.com/wittyjudge/dotfiles"
-packageslist="https://raw.githubusercontent.com/WIttyJudge/dotfiles/master/packages.csv"
+packages="https://raw.githubusercontent.com/WIttyJudge/dotfiles/master/packages.csv"
 
 ### FUNCTIONS ###
 
@@ -30,11 +30,11 @@ welcome_message() {
     setup Arch Linux system.\\n\\nDo you want to continue?" 8 70
 }
 
-setup_reflector() {
-  pacman_install "reflector"
-  reflector --country Russia,Ukrain --protocol https,http --sort rate --save /etc/pacman.d/mirrorlist > /dev/null 2>&1
-  pacman --noconfirm -Rns reflector  > /dev/null 2>&1
-}
+# setup_reflector() {
+#   pacman_install "reflector"
+#   reflector --country Russia,Ukrain --protocol https,http --sort rate --save /etc/pacman.d/mirrorlist > /dev/null 2>&1
+#   pacman --noconfirm -Rns reflector  > /dev/null 2>&1
+# }
 
 install_yay() {
   if [ ! -f "/usr/bin/yay" ]; then
@@ -64,10 +64,10 @@ aur_install() {
 }
 
 install_packages() {
-  [ ! -f "/tmp/packageslist.csv" ] && curl -Ls "$packageslist" > /tmp/packageslist.csv
+  curl -Ls "$packages" > /tmp/packages.csv
 
   # read first line of file and skip it.
-  exec < /tmp/packageslist.csv
+  exec < /tmp/packages.csv
   read header
 
   while IFS=, read -r tag name description; do
@@ -116,7 +116,7 @@ welcome_message || error "Script was successfully stoped."
 clone_repo $dotfilesrepo "$user_home/dotfiles" "dotfiles"
 
 # Setup reflect for faster downloads using pacman.
-setup_reflector || error "Aborted. Reclector cannot be installed"
+# setup_reflector || error "Aborted. Reclector cannot be installed"
 
 # Install AUR helper.
 install_yay || error "Error while installing yay"
@@ -132,6 +132,9 @@ setup_zsh || error "Error while setting up zsh"
 
 # turning off the annoying sound.
 system_beep_sound_off
+
+# Update fonts
+fc-cache
 
 # Last message. Installation complited.
 finalize
